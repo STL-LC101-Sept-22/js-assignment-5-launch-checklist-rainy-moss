@@ -17,7 +17,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-
     if (testInput === ""){
         return "Empty";
 
@@ -26,7 +25,7 @@ function validateInput(testInput) {
 
     }if (isNaN(Number(testInput)) === true){
         return "Not a Number";
-        }
+    }
 };
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
@@ -42,13 +41,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     }else if (fuelLevel < 10000){
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("CargoStatus").innerHTML = "Fuel level is too low";
-        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
+        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         document.getElementById("launchStatus").style.color = "red";
 
     }else if (cargoMass > 10000){
         document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("CargoStatus").innerHTML = "Cargo is too heavy.";
-        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
+        document.getElementById("CargoStatus").innerHTML = "Cargo is too heavy";
+        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         document.getElementById("launchStatus").style.color = "red";
     }else {
         document.getElementById("faultyItems").style.visibility = "visible";
