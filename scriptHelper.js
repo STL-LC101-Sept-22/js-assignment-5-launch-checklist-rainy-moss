@@ -30,29 +30,29 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
-    if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
+    if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
+        alert("Please enter valid information for each field.");
+        document.getElementById("faultyItems").style.visibility = "hidden";
+    }if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
         alert("All fields are required!");
         document.getElementById("faultyItems").style.visibility = "hidden";
 
-    }else if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
-        alert("Please enter valid information for each field.");
-        document.getElementById("faultyItems").style.visibility = "hidden";
-
-    }else if (fuelLevel < 10000){
+    }if (fuelLevel < 10000){
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("CargoStatus").innerHTML = "Fuel level is too low";
         document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         document.getElementById("launchStatus").style.color = "red";
 
-    }else if (cargoMass > 10000){
+    }if (cargoMass > 10000){
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("CargoStatus").innerHTML = "Cargo is too heavy";
         document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         document.getElementById("launchStatus").style.color = "red";
-    }else {
-        document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("launchStatus").style.color = "green";
     }
+
+    document.getElementById("faultyItems").style.visibility = "visible";
+    document.getElementById("launchStatus").style.color = "green";
+    
 };
    
 async function myFetch() {
