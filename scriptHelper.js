@@ -18,22 +18,32 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
     if (testInput === ""){
+        console.log("empty");
         return "Empty";
 
-    }if (isNaN(Number(testInput)) === false){
+    }if (isNaN(testInput) === false){
+        console.log("is a number");
         return "Is a number";
 
     }if (isNaN(Number(testInput)) === true){
+        console.log("not a number")
         return "Not a Number";
     }
 };
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
-    if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
-        alert("Please enter valid information for each field.");
-        document.getElementById("faultyItems").style.visibility = "hidden";
-    }if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
+    // if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
+    //     //alert("Please enter valid information for each field.");
+    //     console.log(pilot);
+    //     console.log(copilot);
+    //     console.log(fuelLevel);
+    //     console.log(cargoMass);
+
+    //     document.getElementById("faultyItems").style.visibility = "hidden";
+
+    // }
+    if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
         alert("All fields are required!");
         document.getElementById("faultyItems").style.visibility = "hidden";
 
