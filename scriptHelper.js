@@ -18,41 +18,44 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
 
-    window.addEventListener("load", function(){
-        let form = document.querySelector("form");
-        form.addEventListener("submit", function(event){
-            let pilot = document.querySelector("input[name=pilot]");
-            let copilot = document.querySelector("input[name=copilot]");
-            let fuelLevel = document.querySelector("input[name=fuelLevel]");
-            let cargoLevel = document.querySelector("input[name=cargoLevel]");
-        })
+    if (testInput === ""){
+        return "Empty";
 
-    if (pilotInput.value == "" || pilotInput.value == "" || copilotInput.value == "" || fuelLevelInput.value == "" || cargoLevelInput.value == ""){
-        alert("Empty");
-        event.preventDefault();
+    }if (isNaN(Number(testInput)) === false){
+        return "Is a number";
 
-    }if (isNaN(Number(pilotInput.value)) === false || isNaN(Number(copilotInput.value)) === false){
-        alert ("Is a number");
-        event.preventDefault();
-        
-    }if (isNaN(Number(fuelLevelInput.value)) === true || isNaN(Number(cargoLevelInput.value) === true)){
-        alert ("Not a Number");
-        event.preventDefault();
-    } 
-    });
+    }if (isNaN(Number(testInput)) === true){
+        return "Not a Number";
         }
+};
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
-    
-    
-    });
+    if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
+        alert("All fields are required!");
+        document.getElementById("faultyItems").style.visibility = "hidden";
 
-    validateInput();
+    }else if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
+        alert("Please enter valid information for each field.");
+        document.getElementById("faultyItems").style.visibility = "hidden";
+
+    }else if (fuelLevel < 10000){
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("CargoStatus").innerHTML = "Fuel level is too low";
+        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
+        document.getElementById("launchStatus").style.color = "red";
+
+    }else if (cargoMass > 10000){
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("CargoStatus").innerHTML = "Cargo is too heavy.";
+        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
+        document.getElementById("launchStatus").style.color = "red";
+    }else {
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("launchStatus").style.color = "green";
+    }
 };
    
-
-
 async function myFetch() {
     let planetsReturned;
 

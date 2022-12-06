@@ -1,7 +1,14 @@
 //Write your JavaScript code here!
 
-// window.addEventListener("load", function() {
-
+window.addEventListener("load", function(){
+    let form = document.querySelector("form");
+    form.addEventListener("submit", function(event){
+        pilot = document.querySelector("input[name=pilot]");
+        copilot = document.querySelector("input[name=copilot]");
+        fuelLevel = document.querySelector("input[name=fuelLevel]");
+        cargoLevel = document.querySelector("input[name=cargoLevel]");
+    });
+});
 //    let listedPlanets;
 //    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
 //    let listedPlanetsResponse;
