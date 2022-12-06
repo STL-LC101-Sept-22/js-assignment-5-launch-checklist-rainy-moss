@@ -17,12 +17,41 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-   
-}
+
+    window.addEventListener("load", function(){
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function(event){
+            let pilot = document.querySelector("input[name=pilot]");
+            let copilot = document.querySelector("input[name=copilot]");
+            let fuelLevel = document.querySelector("input[name=fuelLevel]");
+            let cargoLevel = document.querySelector("input[name=cargoLevel]");
+        })
+
+    if (pilotInput.value == "" || pilotInput.value == "" || copilotInput.value == "" || fuelLevelInput.value == "" || cargoLevelInput.value == ""){
+        alert("Empty");
+        event.preventDefault();
+
+    }if (isNaN(Number(pilotInput.value)) === false || isNaN(Number(copilotInput.value)) === false){
+        alert ("Is a number");
+        event.preventDefault();
+        
+    }if (isNaN(Number(fuelLevelInput.value)) === true || isNaN(Number(cargoLevelInput.value) === true)){
+        alert ("Not a Number");
+        event.preventDefault();
+    } 
+    });
+        }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+
+    
+    
+    });
+
+    validateInput();
+};
    
-}
+
 
 async function myFetch() {
     let planetsReturned;
