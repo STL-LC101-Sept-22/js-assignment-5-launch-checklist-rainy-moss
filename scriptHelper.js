@@ -25,7 +25,7 @@ function validateInput(testInput) {
         console.log("is a number");
         return "Is a number";
 
-    }if (isNaN(Number(testInput)) === true){
+    }if (isNaN(testInput)){
         console.log("not a number")
         return "Not a Number";
     }
@@ -33,36 +33,34 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
-    // if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
-    //     //alert("Please enter valid information for each field.");
-    //     console.log(pilot);
-    //     console.log(copilot);
-    //     console.log(fuelLevel);
-    //     console.log(cargoMass);
+    let pilotStatus = document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+    let fuelStatus = document.getElementById("fuelStatus");
+    let cargoStatus = document.getElementById("cargoStatus");
 
-    //     document.getElementById("faultyItems").style.visibility = "hidden";
-
-    // }
-    if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
+    if (validateInput(pilot) === "Is a number" || validateInput(copilot) === "Is a number" || validateInput(fuelLevel) === "Not a number" || validateInput(cargoMass) === "Not a number"){
+        alert("Please enter valid information for each field.");
+        list.style.visibility = "hidden";
+        
+    }if (validateInput(pilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"){
         alert("All fields are required!");
-        document.getElementById("faultyItems").style.visibility = "hidden";
+        list.style.visibility = "hidden";
 
     }if (fuelLevel < 10000){
-        document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("CargoStatus").innerHTML = "Fuel level is too low";
-        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-        document.getElementById("launchStatus").style.color = "red";
+        list.style.visibility = "visible";
+        cargoStatus.innerHTML = "Fuel level is too low";
+        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.style.color = "red";
 
     }if (cargoMass > 10000){
-        document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("CargoStatus").innerHTML = "Cargo is too heavy";
-        document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-        document.getElementById("launchStatus").style.color = "red";
+        list.style.visibility = "visible";
+        cargoStatus.innerHTML = "Cargo is too heavy";
+        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.style.color = "red";
     }
 
-    document.getElementById("faultyItems").style.visibility = "visible";
+    list.style.visibility = "visible";
     document.getElementById("launchStatus").style.color = "green";
-    
 };
    
 async function myFetch() {
