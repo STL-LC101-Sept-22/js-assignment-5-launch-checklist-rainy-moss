@@ -17,7 +17,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    testInput = Number(testInput);
     if (testInput === ""){
         return "Empty";
     }
