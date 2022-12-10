@@ -45,20 +45,20 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
     }else {
         list.style.visibility = "visible";
-        pilotStatus.innerHTML = `Pilot Name:  ${pilot}`;
-        copilotStatus.innerHTML = `Copilot Name: ${copilot}`;
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch'`;
+        copilotStatus.innerHTML = `Co-pilot ${copilotStatus} is ready for launch`;
         launchStatus.innerHTML = "Shuttle ready for launch";
-        launchStatus.style.color = "green";
+        launchStatus.style.color = "rgb(65, 159, 106)";
 
         if (fuelLevel < 10000 ){
-        fuelStatus.innerHTML = "Fuel level is too low";
+        fuelStatus.innerHTML = "Fuel level too low for launch";
         launchStatus.innerHTML = "Shuttle not ready for launch";
-        launchStatus.style.color = "red";
+        launchStatus.style.color = "rgb(199, 37, 78)";
 
         }if (cargoMass > 10000){
-        cargoStatus.innerHTML = "Cargo is too heavy";
+        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
         launchStatus.innerHTML = "Shuttle not ready for launch";
-        launchStatus.style.color = "red";
+        launchStatus.style.color = "rgb(199, 37, 78)";
     }
     }
 };
@@ -66,7 +66,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 async function myFetch() {
     let planetsReturned;
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        if (response.status >= 400){
+            throw new Error ("Bad response");
+        }else{
         return response.json()
+        }
     });
     return planetsReturned;
 }
