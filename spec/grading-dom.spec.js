@@ -3,7 +3,7 @@
 var screen = require('@testing-library/dom');
 var JasmineDOM = require('@testing-library/jasmine-dom');
 var studentFunctions = require('../scriptHelper.js');
-//require('isomorphic-fetch');
+require('isomorphic-fetch');
 
 // Set up JSDom
 const fs = require('fs');
