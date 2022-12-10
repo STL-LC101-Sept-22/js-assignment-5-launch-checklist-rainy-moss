@@ -28,9 +28,9 @@ describe ("GRADING DOM MANIPULATION TEST: ", function () {
 
       const dom = await JSDOM.fromFile(path.resolve(__dirname, "../index.html"), options).then(dom => window = dom.window);
 
-      // let scriptElement = window.document.createElement("script");
-      // scriptElement.textContent = script;
-      // window.document.head.appendChild(scriptElement);
+      let scriptElement = window.document.createElement("script");
+      scriptElement.textContent = script;
+      window.document.head.appendChild(scriptElement);
 
       await new Promise (resolve => {
         window.addEventListener('load', resolve);
@@ -45,11 +45,11 @@ describe ("GRADING DOM MANIPULATION TEST: ", function () {
       });
    });
 
-  //  it ("Function properly validates text", function() {
-  //     expect(studentFunctions.validateInput("")).toEqual("Empty");
-  //     expect(studentFunctions.validateInput("asdf")).toEqual("Not a Number");
-  //     expect(studentFunctions.validateInput("10")).toEqual("Is a Number");
-  //  })
+   it ("Function properly validates text", function() {
+      expect(studentFunctions.validateInput("")).toEqual("Empty");
+      expect(studentFunctions.validateInput("asdf")).toEqual("Not a Number");
+      expect(studentFunctions.validateInput("10")).toEqual("Is a Number");
+   })
 
    it ("Launch CheckList is ready to go", function() {
       // Check page before form submission to make sure everything is working
