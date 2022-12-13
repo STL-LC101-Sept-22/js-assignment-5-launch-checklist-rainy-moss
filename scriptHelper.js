@@ -20,10 +20,10 @@ function validateInput(testInput) {
     if (testInput === ""){
         return "Empty";
     }
-    if (isNaN(testInput) === false){
+    if (isNaN(parseInt(testInput)) === false && testInput >=0){
         return "Is a Number";
 
-    }else if (isNaN(testInput)){
+    }else if (isNaN(parseInt(testInput))){
         return "Not a Number";
     }
 };
